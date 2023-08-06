@@ -86,7 +86,6 @@ const items = {
     event.preventDefault(); // Prevent the default form submission behavior
     const searchBar = $('#searchBar');
     const searchTerm = searchBar.val();
-    console.log(searchTerm);
     await findEventTitle(searchTerm);
   }
 
@@ -102,14 +101,11 @@ const items = {
   async function findEventTitle(searchTerm) {
     for (const trip of tripType) {
       if (trip.includes(searchTerm)) {
-        console.log('Event found!');
         updateRequirementTxt('location');
         await getLocation(searchTerm);
       } else {
         showMessage(invalid);
-      console.log('Sorry, no events found.');
       }
-
     } 
   }
 

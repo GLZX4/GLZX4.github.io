@@ -1,0 +1,10 @@
+body,html {
+  background-image: linear-gradient(to top, #fad0c4 0%, #ffd1ff 100%);
+  height: 100%;
+  margin: 0;
+  font-family: luckiest-guy;
+}
+@font-face {
+  font-family: luckiest-guy;
+  src: url(../fonts/LuckiestGuy-Regular.ttf);
+}

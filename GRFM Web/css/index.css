@@ -1,0 +1,200 @@
+body, html {
+    max-width: 100%;
+    overflow-x: hidden;
+    margin: 0;
+    font-family: luckiest-guy;
+}
+.introBox {
+    position: absolute;
+    top: 13%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: 5%;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+.introTxtWrapper {
+    text-align: center;
+  }
+  
+.introTxt {
+    position: relative;
+    font-size: calc(3.5vh + 3.5vw + 3.5vmin);
+    font-weight: bold;
+    text-align: center;
+    left: 0%;
+    color: #573771;
+  }
+
+.requirementTxt {
+    position: absolute;
+    top: 120%; /* Set the position relative to the bottom of the introBox */
+    left: 50%;
+    width: 80%;
+    transform: translate(-50%, 0);
+    font-size: calc(2vh + 2vw + 2vmin);
+    font-weight: bold;
+    text-align: center;
+    color: #573771;
+  }
+  
+.searchContainer {
+    position: relative;
+    top: 35%;
+    left: 50%;
+    height: 10%;
+    width: 50%; 
+    transform: translate(-50%, -50%);
+    align-items: center;
+  }
+
+  .helpTxt {
+    position: relative;
+    top: 75%;
+    left: 50%;
+    height: 40%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: calc(0.7vh + 0.7vw + 0.7vmin);
+    transition: top 1s ease-in-out; /* Only transition the 'top' property */
+}
+
+.searchContainer.hasText .helpTxt {
+    top: 120%; /* Adjust this value as needed */
+}
+
+
+.Randomizer {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 25%;
+    align-items: center;
+    justify-content: center;
+}
+
+.randomEventButton {
+    position: relative;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(56, 1, 70, 0.200);
+    border: 1px solid #DFDFDF;
+    border-radius: 30px;
+    box-sizing: border-box;
+    color: #573771;
+    cursor: pointer;
+    display: flex;
+    font-family: 'Luckiest Guy';
+    font-size: 36px;
+    justify-content: center;
+    line-height: 28px;
+    max-width: 100%;
+    padding: 20px 22px;
+    text-decoration: none;
+    transition: all .2s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 80%;
+}
+.randomTxt {
+    position:relative;
+    top: 10%;
+    left: 50%;
+    width: 80%;
+    color: #573771;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    font-size: calc(1.8vh + 1.8vw + 1.8vmin);
+}
+
+.randomCatLink {
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 5%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #573771;
+    text-decoration: none;
+}
+
+.messageBox {
+  position: fixed;
+  top: 10px;
+  left: 75px;
+  right: 10px;
+  padding: 10px;
+  background-color: #f44336;
+  color: white;
+  font-size: 14px;
+  border-radius: 5px;
+  display: none; /* Initially hide the message box */
+}
+
+.messageBox.show {
+  display: block; /* Show the message box when the "show" class is applied */
+}
+
+.messageBox .close {
+  float: right;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+
+.button-46:active,
+.button-46:hover {
+  outline: 0;
+}
+
+.button-46:hover {
+  background-color: #FFFFFF;
+  border-color: rgba(0, 0, 0, 0.19);
+}
+
+
+.footer {
+    font-family: 'Courier New', Courier, monospace;
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    width: 25%;
+    height: 5%;
+    text-align: left;
+    font-size: calc(0.5vh + 0.5vw + 0.5vmin);
+    font-weight: bold;
+}
+.inlineContainer {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.footerTxt {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 12px;
+}
+  

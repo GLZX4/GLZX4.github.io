@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GRFM | GLZX4</title>
+    <script src="BackgroundJS/code.jquery.com_jquery-3.7.0.min.js"></script>
+    <link rel="stylesheet" href="css/background.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/search.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/hamburgerMenu.css">
+    <script src="BackgroundJS/search.js"></script>
+    <script src="BackgroundJS/randomCat.js"></script>
+    <script src="BackgroundJS/event.js"></script>
+    <script type="module" src="BackgroundJS/main.js"></script>
+</head>
+
+<div class="hamburger-menu">
+  <input id="menu__toggle" type="checkbox" />
+  <label class="menu__btn" for="menu__toggle">
+    <span></span>
+  </label>
+  <div class="logo">
+    <img src="images/GRFM.svg" alt="Logo">
+  </div>
+  </label>
+
+  <ul class="menu__box">
+    <li><a class="menu__item" href="index.html" id="menu">Home</a></li>
+    <li><a class="menu__item" href="#" id="menu">Previous Events</a></li>
+    <li><a class="menu__item" href="https://github.com/GLZX4/GRFM-WebApp" id="menu">Github</a></li>
+    <li><a class="menu__item" href="https://www.mind.org.uk/information-support/guides-to-support-and-services/crisis-services/getting-help-in-a-crisis/" id="menu">Get Personal Help</a></li>
+    <li><a class="menu__item" href="#" id="menu">Get Help with the Software</a></li>
+    
+  </ul>
+</div>
+
+<header>
+  <div class="introBox">
+    <div class="introTxtWrapper">
+      <div class="introTxt">Hello Maya!</div>
+      <div class="requirementTxt">What do you need to do today?</div>
+    </div>
+  </div>
+</header>
+
+
+<body>
+    <div class="searchContainer" id="searchContainer">
+      <!-- https://codepen.io/menelaosly/pen/rZddyb -->
+      <form id="searchForm" action="">
+        <input type="search" required id="searchBar">
+        <button class="fa fa-search" id="searchBtn"></button>
+        <a href="#" id="clear-btn">Clear</a>
+      </form>
+    <div class="helpTxt">Tip: Click on the button and begin typing your event, once you press enter, you will be asked for the location, then the program will calculate your results!</div>
+    </div>
+
+    <div id="messageBox" class="messageBox"></div>
+
+    <div class="Randomizer">
+      <div class="randomTxt">Need Some Help Deciding?</div>
+      <button class="randomEventButton">Randomize!</button>
+    </div>    
+</body>
+
+
+  <a href="#" class="randomCatLink">Stuck or not Feeling too great? How about a Cat Photo instead? CLick Me!</a>
+  
+  
+<footer>
+  <div class="footer">
+    <div class="footerTxt">GRFM v0.1</div>
+  </div>
+</footer>
+
+</html>

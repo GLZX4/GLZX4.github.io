@@ -162,7 +162,7 @@ const items = {
 
   async function getWeather() {
     try {
-      const response = await fetch('http://api.weatherapi.com/v1/current.json?key=3aea4406382b4a7a9cd193012232707&q=M41&aqi=no');
+      const response = await fetch('https://api.weatherapi.com/v1/current.json?key=3aea4406382b4a7a9cd193012232707&q=M41&aqi=no');
       const data = await response.json();
       const averageTemp = data.current.temp_c; // Use current.temp_c to get the temperature
       return averageTemp;

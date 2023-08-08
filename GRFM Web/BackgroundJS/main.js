@@ -7,10 +7,8 @@ $(document).ready(function() {
     'Work',
     'University',
     'Dads',
-    'Social',
-    'Date'
-  ];
-  let locationsRandom = [
+    'Meet with Friends',
+    'Date',
     'town',
     'Muesum',
     'Cinema',
@@ -23,6 +21,11 @@ $(document).ready(function() {
     'Trafford Centre',
     'club',
     'Gym',
+  ];
+  let tripRandom = [
+    'Meet with Friends',
+    'Date',
+
   ]
 
   // Enum for items
@@ -80,7 +83,7 @@ const items = {
 
   function handleRandomEvent() {
     let randomTitle = 'Your Random Event';
-    let randomLocation = locationsRandom[Math.floor(Math.random() * locationsRandom.length)];
+    let randomLocation = tripType[Math.floor(Math.random() * tripType.length)];
 
     AddEvent(randomTitle, randomLocation);
   }
@@ -92,7 +95,7 @@ const items = {
     let eventTime = findEventTime(eventType);
     eventTime =+ findTravelTime(eventLocation);
     const eventTemp = await getWeather();
-    items = createItemList(eventLocation, eventTemp);
+    items = createItemList(eventType, eventTemp);
 
     const newEvent = new Event(eventType, eventLocation, eventTime, eventTemp, items);
   
@@ -187,13 +190,13 @@ const items = {
 
   function findTravelTime(eventLocation) {
     switch (eventLocation) {
-      case locationsRandom[0],[1]:
+      case tripType[0],[1]:
         return 60;
-      case locationsRandom[2],[3],[4],[5],[9],[10]:
+      case tripType[2],[3],[4],[5],[9],[10]:
         return 40;
-      case locationsRandom[6],[8],[11]:
+      case tripType[6],[8],[11]:
         return 30;
-      case locationsRandom[7]:
+      case tripType[7]:
         return 20;
       default:
         return 30;
@@ -212,7 +215,7 @@ const items = {
     }
   }
 
-  function createItemList(eventLocation, eventTemp) {
+  function createItemList(eventType, eventTemp) {
     const itemsList = [];
 
     // Push items using their numeric IDs
@@ -231,7 +234,7 @@ const items = {
     } else if (eventTemp > 20) {
         itemsList.push(items[33]); // sunCream
     }
-    if (eventLocation === locationsRandom[0]) {
+    if (eventType === tripType[0]) {
         itemsList.push(items[14]); // backpack
         itemsList.push(items[7]); // Purse
         itemsList.push(items[13]); // plasticBag
@@ -239,7 +242,7 @@ const items = {
         itemsList.push(items[30]); // id
         itemsList.push(items[10]); // keys
     }
-    if (eventLocation === locationsRandom[1]) {
+    if (eventType === tripType[1]) {
         itemsList.push(items[14]); // backpack
         itemsList.push(items[7]); // Purse
         itemsList.push(items[16]); // powderPuff
@@ -248,7 +251,7 @@ const items = {
         itemsList.push(items[3]); // USBChargerTypeC
         itemsList.push(items[11]); // pads
     }
-    if (eventLocation === locationsRandom[2]) {
+    if (eventType === tripType[2]) {
       itemsList.push(items[14]); // backpack
       itemsList.push(items[15]); // smallBag
       itemsList.push(items[10]); // keys
@@ -261,7 +264,7 @@ const items = {
       itemsList.push(items[22]); // hairBobbles
       itemsList.push(items[31]); // drink
   }
-  if (eventLocation === locationsRandom[3]) {
+  if (eventType === tripType[3]) {
       itemsList.push(items[15]); // smallBag
       itemsList.push(items[7]); // Purse
       itemsList.push(items[3]); // USBChargerTypeC
@@ -276,7 +279,7 @@ const items = {
       itemsList.push(items[8]); // pill
       itemsList.push(items[12]); // Ticket
   }
-  if (eventLocation === locationsRandom[4]) {
+  if (eventType === tripType[4]) {
       itemsList.push(items[14]); // backpack
       itemsList.push(items[7]); // Purse
       itemsList.push(items[3]); // USBChargerTypeC
@@ -298,7 +301,7 @@ const items = {
       itemsList.push(items[23]); // hairBrush
       itemsList.push(items[19]); // nintendoSwitch
   }
-  if (eventLocation === locationsRandom[5]) {
+  if (eventType === tripType[5]) {
       itemsList.push(items[15]); // smallBag
       itemsList.push(items[10]); // keys
       itemsList.push(items[7]); // Purse
@@ -309,7 +312,7 @@ const items = {
       itemsList.push(items[11]); // pads
       itemsList.push(items[8]); // pill
   }
-  if (eventLocation === locationsRandom[6]) {
+  if (eventType === tripType[6]) {
       itemsList.push(items[15]); // smallBag
       itemsList.push(items[7]); // Purse
       itemsList.push(items[3]); // USBChargerTypeC
@@ -319,7 +322,7 @@ const items = {
       itemsList.push(items[11]); // pads
       itemsList.push(items[8]); // pill
   }
-  if (eventLocation === locationsRandom[7]) {
+  if (eventType === tripType[7]) {
       itemsList.push(items[14]);
       itemsList.push(items[34]);
       itemsList.push(items[35]);
@@ -331,7 +334,7 @@ const items = {
       itemsList.push(items[37]);
       itemsList.push(items[38]);
     }
-    if (eventLocation === locationsRandom[8]) {
+    if (eventType === tripType[8]) {
       itemsList.push(items[14]); // backpack
       itemsList.push(items[7]); // Purse
       itemsList.push(items[13]); // plasticBag
@@ -340,7 +343,7 @@ const items = {
       itemsList.push(items[10]); // keys
 
     }
-    if (eventLocation === locationsRandom[9]) {
+    if (eventType === tripType[9]) {
       itemsList.push(items[14]); // backpack
       itemsList.push(items[7]); // Purse
       itemsList.push(items[13]); // plasticBag

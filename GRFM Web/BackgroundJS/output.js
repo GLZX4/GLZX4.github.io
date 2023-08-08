@@ -13,8 +13,8 @@ $(document).ready(function () {
       console.log(latestEvent.itemsList);
       $('.eventTitleData').text(latestEvent.eventType);
       $('.eventLocationData').text(latestEvent.location);
-      $('.eventTimeData').text(latestEvent.time);
-      $('.eventTempData').text(latestEvent.temp);
+      $('.eventTimeData').text(latestEvent.time + ' Minutes');
+      $('.eventTempData').text(latestEvent.temp + ' °C');
       $('.eventItemsData').text(latestEvent.itemsList.join(', '));
       console.log(latestEvent);
     }

@@ -32,19 +32,21 @@ header {
 .eventTitle,
 .eventLocation,
 .eventTemp,
+.eventTime,
 .eventItems {
-    font-size: calc(1.5vh + 1.5vw + 1vmin);
+    font-size: calc(1.3vh + 1.3vw + 1vmin);
     margin-bottom: 40px;
 }
 .eventTitleData,
 .eventLocationData,
+.eventTimeData,
 .eventTempData{
-    font-size: calc(3vh + 3vw + 3vmin);
+    font-size: calc(2vh + 2vw + 2vmin);
     margin-bottom: px;
     color: #573771;
 }
 .eventItemsData {
-    font-size: calc(2vh + 2vw + 2vmin);
+    font-size: calc(1vh + 1vw + 1vmin);
     margin-bottom: 10px;
     color: #573771;
 }

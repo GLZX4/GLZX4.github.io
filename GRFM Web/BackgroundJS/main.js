@@ -10,6 +10,20 @@ $(document).ready(function() {
     'Social',
     'Date'
   ];
+  let locationsRandom = [
+    'town',
+    'Muesum',
+    'Cinema',
+    'Park',
+    'Restaurant',
+    'Pub',
+    'Cafe',
+    'Library',
+    'Super Market',
+    'Trafford Centre',
+    'club',
+    'Gym',
+  ]
 
   // Enum for items
 const items = {
@@ -46,7 +60,13 @@ const items = {
   30: 'ID',
   31: 'Drink',
   32: 'Snacks',
-  33: 'SunCream'
+  33: 'Sun Cream',
+  34: 'Pencil Case',
+  35: 'memory Stick',
+  36: 'Laptop Charger',
+  37: 'Water Bottle',
+  38: 'Comfy Socks',
+  39: 'Tissues',
 };
 
   const invalid = "Sorry that's not an input you have Chosen, ask George if you are Stuck!";
@@ -55,15 +75,24 @@ const items = {
   const searchForm = $('#searchForm');
   searchForm.on('submit', handleFormSubmit);
 
+  const randomBtn = $('#randomEventButton');
+  $(document).on('click', '.randomEventButton', handleRandomEvent);
 
+  function handleRandomEvent() {
+    let randomTitle = 'Your Random Event';
+    let randomLocation = locationsRandom[Math.floor(Math.random() * locationsRandom.length)];
+
+    AddEvent(randomTitle, randomLocation);
+  }
 
   async function AddEvent(eventTitle, eventLoc) {
     let items = [];
     const eventType = eventTitle;
     const eventLocation = eventLoc;
-    const eventTime = findEventTime(eventType);
+    let eventTime = findEventTime(eventType);
+    eventTime =+ findTravelTime(eventLocation);
     const eventTemp = await getWeather();
-    items = createItemList(eventType, eventTemp);
+    items = createItemList(eventLocation, eventTemp);
 
     const newEvent = new Event(eventType, eventLocation, eventTime, eventTemp, items);
   
@@ -156,6 +185,21 @@ const items = {
       return runningTotal;
   }
 
+  function findTravelTime(eventLocation) {
+    switch (eventLocation) {
+      case locationsRandom[0],[1]:
+        return 60;
+      case locationsRandom[2],[3],[4],[5],[9],[10]:
+        return 40;
+      case locationsRandom[6],[8],[11]:
+        return 30;
+      case locationsRandom[7]:
+        return 20;
+      default:
+        return 30;
+  }
+}
+
   async function getWeather() {
     try {
       const response = await fetch('https://api.weatherapi.com/v1/current.json?key=3aea4406382b4a7a9cd193012232707&q=M41&aqi=no');
@@ -168,7 +212,7 @@ const items = {
     }
   }
 
-  function createItemList(eventType, eventTemp) {
+  function createItemList(eventLocation, eventTemp) {
     const itemsList = [];
 
     // Push items using their numeric IDs
@@ -187,7 +231,7 @@ const items = {
     } else if (eventTemp > 20) {
         itemsList.push(items[33]); // sunCream
     }
-    if (eventType === tripType[0]) {
+    if (eventLocation === locationsRandom[0]) {
         itemsList.push(items[14]); // backpack
         itemsList.push(items[7]); // Purse
         itemsList.push(items[13]); // plasticBag
@@ -195,7 +239,7 @@ const items = {
         itemsList.push(items[30]); // id
         itemsList.push(items[10]); // keys
     }
-    if (eventType === tripType[1]) {
+    if (eventLocation === locationsRandom[1]) {
         itemsList.push(items[14]); // backpack
         itemsList.push(items[7]); // Purse
         itemsList.push(items[16]); // powderPuff
@@ -204,7 +248,7 @@ const items = {
         itemsList.push(items[3]); // USBChargerTypeC
         itemsList.push(items[11]); // pads
     }
-    if (eventType === tripType[2]) {
+    if (eventLocation === locationsRandom[2]) {
       itemsList.push(items[14]); // backpack
       itemsList.push(items[15]); // smallBag
       itemsList.push(items[10]); // keys
@@ -217,7 +261,7 @@ const items = {
       itemsList.push(items[22]); // hairBobbles
       itemsList.push(items[31]); // drink
   }
-  if (eventType === tripType[3]) {
+  if (eventLocation === locationsRandom[3]) {
       itemsList.push(items[15]); // smallBag
       itemsList.push(items[7]); // Purse
       itemsList.push(items[3]); // USBChargerTypeC
@@ -232,7 +276,7 @@ const items = {
       itemsList.push(items[8]); // pill
       itemsList.push(items[12]); // Ticket
   }
-  if (eventType === tripType[4]) {
+  if (eventLocation === locationsRandom[4]) {
       itemsList.push(items[14]); // backpack
       itemsList.push(items[7]); // Purse
       itemsList.push(items[3]); // USBChargerTypeC
@@ -254,7 +298,7 @@ const items = {
       itemsList.push(items[23]); // hairBrush
       itemsList.push(items[19]); // nintendoSwitch
   }
-  if (eventType === tripType[5]) {
+  if (eventLocation === locationsRandom[5]) {
       itemsList.push(items[15]); // smallBag
       itemsList.push(items[10]); // keys
       itemsList.push(items[7]); // Purse
@@ -265,7 +309,7 @@ const items = {
       itemsList.push(items[11]); // pads
       itemsList.push(items[8]); // pill
   }
-  if (eventType === tripType[6]) {
+  if (eventLocation === locationsRandom[6]) {
       itemsList.push(items[15]); // smallBag
       itemsList.push(items[7]); // Purse
       itemsList.push(items[3]); // USBChargerTypeC
@@ -275,7 +319,40 @@ const items = {
       itemsList.push(items[11]); // pads
       itemsList.push(items[8]); // pill
   }
-  
+  if (eventLocation === locationsRandom[7]) {
+      itemsList.push(items[14]);
+      itemsList.push(items[34]);
+      itemsList.push(items[35]);
+      itemsList.push(items[36]);
+      itemsList.push(items[3]);
+      itemsList.push(items[10]);
+      itemsList.push(items[5]);
+      itemsList.push(items[8]);
+      itemsList.push(items[37]);
+      itemsList.push(items[38]);
+    }
+    if (eventLocation === locationsRandom[8]) {
+      itemsList.push(items[14]); // backpack
+      itemsList.push(items[7]); // Purse
+      itemsList.push(items[13]); // plasticBag
+      itemsList.push(items[28]); // shoppingList
+      itemsList.push(items[30]); // id
+      itemsList.push(items[10]); // keys
+
+    }
+    if (eventLocation === locationsRandom[9]) {
+      itemsList.push(items[14]); // backpack
+      itemsList.push(items[7]); // Purse
+      itemsList.push(items[13]); // plasticBag
+      itemsList.push(items[28]); // shoppingList
+      itemsList.push(items[30]); // id
+      itemsList.push(items[10]); // keys
+      itemsList.push(items[16]); // powderPuff
+      itemsList.push(items[17]); // lipstick
+      itemsList.push(items[11]); // pads
+      
+    }
+
   return itemsList;
 }
 

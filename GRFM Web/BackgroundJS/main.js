@@ -25,7 +25,9 @@ $(document).ready(function() {
   let tripRandom = [
     'Meet with Friends',
     'Date',
-
+    'Go to the Gym',
+    'Cafe',
+    'Library',
   ]
 
   // Enum for items
@@ -82,8 +84,8 @@ const items = {
   $(document).on('click', '.randomEventButton', handleRandomEvent);
 
   function handleRandomEvent() {
-    let randomTitle = 'Your Random Event';
-    let randomLocation = tripType[Math.floor(Math.random() * tripType.length)];
+    let randomTitle =  tripRandom[Math.floor(Math.random() * tripRandom.length)];
+    let randomLocation = 'Chose your own Location';
 
     AddEvent(randomTitle, randomLocation);
   }
@@ -184,7 +186,6 @@ const items = {
       default:
         showMessage(invalid);
     }
-
       return runningTotal;
   }
 
@@ -234,131 +235,164 @@ const items = {
     } else if (eventTemp > 20) {
         itemsList.push(items[33]); // sunCream
     }
-    if (eventType === tripType[0]) {
-        itemsList.push(items[14]); // backpack
-        itemsList.push(items[7]); // Purse
-        itemsList.push(items[13]); // plasticBag
-        itemsList.push(items[28]); // shoppingList
-        itemsList.push(items[30]); // id
-        itemsList.push(items[10]); // keys
+    switch (eventType) {
+      case tripType[0]:
+        itemsList.push(backpackItems());
+        itemsList.push(shoppingitems());
+        break;
+      case tripType[1]:
+        itemsList.push(backpackItems());
+        itemsList.push(electronicsItems());
+        break;
+      case tripType[2]:
+        itemsList.push(SmallBagItems());
+        itemsList.push(electronicsItems());
+        break;
+      case tripType[3]:
+        itemsList.push(backpackItems());
+        itemsList.push(electronicsItems());
+        itemsList.push(makeupItems());
+        itemsList.push(UniversityItems());
+        break;
+      case tripType[4]:
+        itemsList.push(backpackItems());
+        itemsList.push(electronicsItems());
+        itemsList.push(makeupItems());
+        itemsList.push(extednedElectronicsItems());
+        break;
+      case tripType[5] || tripRandom[0]:
+        itemsList.push(SmallBagItems());
+        itemsList.push(electronicsItems());
+        itemsList.push(makeupItems());
+        break;
+      case tripType[6] || tripRandom[1]:
+        itemsList.push(SmallBagItems());
+        itemsList.push(electronicsItems());
+        itemsList.push(makeupItems());
+        break;
+      case tripType[7]:
+        itemsList.push(backpackItems());
+        itemsList.push(electronicsItems());
+        itemsList.push(makeupItems());
+        break;
+      case tripType[8]:
+        itemsList.push(SmallBagItems());
+        itemsList.push(electronicsItems());
+        itemsList.push(makeupItems());
+        break;
+      case tripType[9]:
+        itemsList.push(SmallBagItems());
+        itemsList.push(electronicsItems());
+        itemsList.push(makeupItems());
+        break;
+      case tripType[10]:
+        itemsList.push(SmallBagItems());
+        itemsList.push(electronicsItems());
+        itemsList.push(makeupItems());
+        break;
+      case tripType[11]:
+        itemsList.push(SmallBagItems());
+        itemsList.push(electronicsItems());
+        itemsList.push(makeupItems());
+        break;
+      case tripType[12]:
+        itemsList.push(SmallBagItems());
+        itemsList.push(electronicsItems());
+        itemsList.push(makeupItems());
+        break;
+      case tripType[13] || tripRandom[3]:
+        itemsList.push(SmallBagItems());
+        itemsList.push(electronicsItems());
+        itemsList.push(makeupItems());
+        break;
+      case tripType[14]:
+        itemsList.push(backpackItems());
+        itemsList.push(electronicsItems());
+        itemsList.push(UniversityItems());
+        break;
+      case tripType[15]:
+        itemsList.push(backpackItems());
+        itemsList.push(electronicsItems());
+        itemsList.push(shoppingitems());
+        break;
+      case tripType[16]:
+        itemsList.push(backpackItems());
+        itemsList.push(electronicsItems());
+        itemsList.push(shoppingitems());
+        break;
+      case tripType[17]:
+        itemsList.push(SmallBagItems());
+        itemsList.push(electronicsItems());
+        itemsList.push(makeupItems());
+        break;
+      case tripType[18] || tripRandom[2]:
+        itemsList.push(SmallBagItems());
+        itemsList.push(electronicsItems());
+        break;
+        default:
+          showMessage(invalid);    
+        
     }
-    if (eventType === tripType[1]) {
-        itemsList.push(items[14]); // backpack
-        itemsList.push(items[7]); // Purse
-        itemsList.push(items[16]); // powderPuff
-        itemsList.push(items[17]); // lipstick
-        itemsList.push(items[5]); // powerBank
-        itemsList.push(items[3]); // USBChargerTypeC
-        itemsList.push(items[11]); // pads
-    }
-    if (eventType === tripType[2]) {
-      itemsList.push(items[14]); // backpack
-      itemsList.push(items[15]); // smallBag
-      itemsList.push(items[10]); // keys
-      itemsList.push(items[7]); // Purse
-      itemsList.push(items[3]); // USBChargerTypeC
-      itemsList.push(items[5]); // powerBank
-      itemsList.push(items[16]); // powderPuff
-      itemsList.push(items[17]); // lipstick
-      itemsList.push(items[11]); // pads
-      itemsList.push(items[22]); // hairBobbles
-      itemsList.push(items[31]); // drink
-  }
-  if (eventType === tripType[3]) {
-      itemsList.push(items[15]); // smallBag
-      itemsList.push(items[7]); // Purse
-      itemsList.push(items[3]); // USBChargerTypeC
-      itemsList.push(items[5]); // powerBank
-      itemsList.push(items[16]); // powderPuff
-      itemsList.push(items[17]); // lipstick
-      itemsList.push(items[11]); // pads
-      itemsList.push(items[22]); // hairBobbles
-      itemsList.push(items[31]); // drink
-      itemsList.push(items[32]); // snacks
-      itemsList.push(items[25]); // medicine
-      itemsList.push(items[8]); // pill
-      itemsList.push(items[12]); // Ticket
-  }
-  if (eventType === tripType[4]) {
-      itemsList.push(items[14]); // backpack
-      itemsList.push(items[7]); // Purse
-      itemsList.push(items[3]); // USBChargerTypeC
-      itemsList.push(items[4]); // USBChargerMicroB
-      itemsList.push(items[5]); // powerBank
-      itemsList.push(items[16]); // powderPuff
-      itemsList.push(items[17]); // lipstick
-      itemsList.push(items[11]); // pads
-      itemsList.push(items[22]); // hairBobbles
-      itemsList.push(items[10]); // keys
-      itemsList.push(items[12]); // Ticket
-      itemsList.push(items[20]); // Books
-      itemsList.push(items[21]); // Laptop
-      itemsList.push(items[24]); // stuffedAnimal
-      itemsList.push(items[26]); // eyeMask
-      itemsList.push(items[27]); // skinCare
-      itemsList.push(items[25]); // medicine
-      itemsList.push(items[8]); // pill
-      itemsList.push(items[23]); // hairBrush
-      itemsList.push(items[19]); // nintendoSwitch
-  }
-  if (eventType === tripType[5]) {
-      itemsList.push(items[15]); // smallBag
-      itemsList.push(items[10]); // keys
-      itemsList.push(items[7]); // Purse
-      itemsList.push(items[3]); // USBChargerTypeC
-      itemsList.push(items[5]); // powerBank
-      itemsList.push(items[16]); // powderPuff
-      itemsList.push(items[17]); // lipstick
-      itemsList.push(items[11]); // pads
-      itemsList.push(items[8]); // pill
-  }
-  if (eventType === tripType[6]) {
-      itemsList.push(items[15]); // smallBag
-      itemsList.push(items[7]); // Purse
-      itemsList.push(items[3]); // USBChargerTypeC
-      itemsList.push(items[5]); // powerBank
-      itemsList.push(items[16]); // powderPuff
-      itemsList.push(items[17]); // lipstick
-      itemsList.push(items[11]); // pads
-      itemsList.push(items[8]); // pill
-  }
-  if (eventType === tripType[7]) {
-      itemsList.push(items[14]);
-      itemsList.push(items[34]);
-      itemsList.push(items[35]);
-      itemsList.push(items[36]);
-      itemsList.push(items[3]);
-      itemsList.push(items[10]);
-      itemsList.push(items[5]);
-      itemsList.push(items[8]);
-      itemsList.push(items[37]);
-      itemsList.push(items[38]);
-    }
-    if (eventType === tripType[8]) {
-      itemsList.push(items[14]); // backpack
-      itemsList.push(items[7]); // Purse
-      itemsList.push(items[13]); // plasticBag
-      itemsList.push(items[28]); // shoppingList
-      itemsList.push(items[30]); // id
-      itemsList.push(items[10]); // keys
-
-    }
-    if (eventType === tripType[9]) {
-      itemsList.push(items[14]); // backpack
-      itemsList.push(items[7]); // Purse
-      itemsList.push(items[13]); // plasticBag
-      itemsList.push(items[28]); // shoppingList
-      itemsList.push(items[30]); // id
-      itemsList.push(items[10]); // keys
-      itemsList.push(items[16]); // powderPuff
-      itemsList.push(items[17]); // lipstick
-      itemsList.push(items[11]); // pads
-      
-    }
-
   return itemsList;
 }
 
+function backpackItems() {
+  let newItems = [];
+  newItems.push(items[14]); // backpack
+  newItems.push(items[7]); // Purse  
+  newItems.push(items[30]); //id
+  newItems.push(items[10]); // keys
+  newItems.push(items[11]); // pads
+  return newItems;
+
+}
+function SmallBagItems() {
+  let newItems = [];
+  newItems.push(items[15]); // smallBag
+  newItems.push(items[30]); // ID
+  newItems.push(items[10]); // keys
+  newItems.push(items[11]); // pads
+  return newItems;
+  
+}
+function electronicsItems() {
+  let newItems = [];
+  newItems.push(items[3]); // USBChargerTypeC
+  newItems.push(items[5]); // poweerBank
+  return newItems;
+
+}
+function extednedElectronicsItems() {
+  let newItems = [];
+  newItems.push(items[4]); // USBChargerMicroB
+  newItems.push(items[19]); // nintendoSwitch
+  return newItems;
+
+}
+function UniversityItems() {
+  let newItems = [];
+  newItems.push(items[20]); // books
+  newItems.push(items[34]); // pencilCase
+  newItems.push(items[35]); // memoryStick
+  newItems.push(items[21]); // laptop
+  newItems.push(items[36]); // laptopCharger
+  return newItems;
+
+}
+function makeupItems() {
+  let newItems = [];
+  newItems.push(items[16]); // powderPuff
+  newItems.push(items[17]); // lipstick
+  return newItems;
+}
+function shoppingitems() {
+  let newItems = [];
+  newItems.push(items[13]); // plasticBag
+  newItems.push(items[28]); // shoppingList
+  newItems.push(items[28]);
+  return newItems;
+
+}
 
   function showMessage(message) {
     const messageBox = $('#messageBox');

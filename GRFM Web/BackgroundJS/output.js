@@ -8,9 +8,15 @@ $(document).ready(function () {
       console.log(latestEvent.itemsList);
       $('.eventTitleData').text(latestEvent.eventType);
       $('.eventLocationData').text(latestEvent.location);
-      $('.eventTimeData').text(latestEvent.time + ' Minutes');
+      if(latestEvent.eventType == 'Dads'){
+      $('.eventTimeData').text('Unkown amount of days');
+      } else {
+        $('.eventTimeData').text(latestEvent.time + ' Minutes');
+      }
       $('.eventTempData').text(latestEvent.temp + ' °C');
-      $('.eventItemsData').text(latestEvent.itemsList.join(' , '));
+      //$('.eventItemsData').text(latestEvent.itemsList.join(' , '));
+      const itemsList = latestEvent.itemsList.map(item => '<li>' + item + '</li>').join('');
+      $('.eventItemsData').html('<ul>' + itemsList + '</ul>');
     }
   });
   

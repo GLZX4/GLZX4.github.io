@@ -21,6 +21,7 @@ $(document).ready(function() {
     'Trafford Centre',
     'club',
     'Gym',
+    'Mums'
   ];
   let tripRandom = [
     'Meet with Friends',
@@ -72,6 +73,7 @@ const items = {
   37: 'Water Bottle',
   38: 'Comfy Socks',
   39: 'Tissues',
+  40: 'Anxiety Sweets',
 };
 
   const invalid = "Sorry that's not an input you have Chosen, ask George if you are Stuck!";
@@ -95,13 +97,14 @@ const items = {
     const eventType = eventTitle;
     const eventLocation = eventLoc;
     let eventTime = findEventTime(eventType);
-    eventTime =+ findTravelTime(eventLocation);
+    eventTime += findTravelTime(eventLocation);
     const eventTemp = await getWeather();
-    items = createItemList(eventType, eventTemp);
+    items = createItemList(eventType, eventTemp, eventTime);
 
     const newEvent = new Event(eventType, eventLocation, eventTime, eventTemp, items);
   
     eventList.push(newEvent);
+    console.log(newEvent);
 
     localStorage.setItem('events', JSON.stringify(eventList)); // Save the updated eventList to local storage
 
@@ -123,14 +126,23 @@ const items = {
     await findEventTitle(searchTerm);
   }
 
-  function updateRequirementTxt (text) {
+  function updateRequirementTxt(text) {
     const requirementTxt = $('.requirementTxt');
     if (text === 'location') {
       requirementTxt.text('Where do you want to go?');
     } else {
-      requirementTxt.text('What do you need to do Today?')
+      requirementTxt.text('What do you need to do Today?');
     }
+  
+    // Add the class to trigger the animation
+    requirementTxt.addClass('changed');
+  
+    // Remove the class after a short delay (e.g., 1.5 seconds)
+    setTimeout(function() {
+      requirementTxt.removeClass('changed');
+    }, 1200); // Adjust the delay as needed
   }
+  
 
   async function findEventTitle(searchTerm) {
     for (const trip of tripType) {
@@ -175,7 +187,7 @@ const items = {
         runningTotal += 150;
         break;
       case tripType[4]:
-        runningTotal += 60;
+        runningTotal += 999;
         break;
       case tripType[5]:
         runningTotal += 300;
@@ -183,6 +195,41 @@ const items = {
       case tripType[6]:
         runningTotal += 180;
         break;
+      case tripType[7]:
+        runningTotal += 120;
+        break;
+      case tripType[8]:
+        runningTotal += 90;
+        break;
+      case tripType[9]:
+        runningTotal += 160;
+        break;
+      case tripType[10]:
+        runningTotal += 60;
+        break;
+      case tripType[11]:
+        runningTotal += 90;
+        break;
+      case tripType[12]:
+        runningTotal += 60;
+        break;
+      case tripType[13]:
+        runningTotal += 40;
+        break;
+      case tripType[14]:
+        runningTotal += 120;
+        break;
+      case tripType[15]:
+        runningTotal += 40;
+        break;
+      case tripType[16]:
+        runningTotal += 180;
+        break;
+      case tripType[17]:
+        runningTotal += 180;
+        break;
+      case tripType[18]:
+        runningTotal += 90;
       default:
         showMessage(invalid);
     }
@@ -190,19 +237,21 @@ const items = {
   }
 
   function findTravelTime(eventLocation) {
-    switch (eventLocation) {
-      case tripType[0],[1]:
-        return 60;
-      case tripType[2],[3],[4],[5],[9],[10]:
-        return 40;
-      case tripType[6],[8],[11]:
+    switch (eventLocation.toLowerCase()) {
+      case 'chester':
+        return 90;
+      case 'trafford centre':
         return 30;
-      case tripType[7]:
-        return 20;
+      case 'town':
+      case 'manchester':
+        return 60;
+      case 'urmston':
+        return 35;
       default:
         return 30;
+    }
   }
-}
+  
 
   async function getWeather() {
     try {
@@ -216,7 +265,7 @@ const items = {
     }
   }
 
-  function createItemList(eventType, eventTemp) {
+  function createItemList(eventType, eventTemp, eventTime) {
     const itemsList = [];
 
     // Push items using their numeric IDs
@@ -235,163 +284,171 @@ const items = {
     } else if (eventTemp > 20) {
         itemsList.push(items[33]); // sunCream
     }
+    if(eventTime > 60) {
+      itemsList.push(items[40]); // anxietySweets
+    }
     switch (eventType) {
       case tripType[0]:
-        itemsList.push(backpackItems());
-        itemsList.push(shoppingitems());
+        itemsList.push(...backpackItems());
+        itemsList.push(...shoppingitems());
         break;
       case tripType[1]:
-        itemsList.push(backpackItems());
-        itemsList.push(electronicsItems());
+        itemsList.push(...backpackItems());
+        itemsList.push(...electronicsItems());
         break;
       case tripType[2]:
-        itemsList.push(SmallBagItems());
-        itemsList.push(electronicsItems());
+        itemsList.push(...SmallBagItems());
+        itemsList.push(...electronicsItems());
         break;
       case tripType[3]:
-        itemsList.push(backpackItems());
-        itemsList.push(electronicsItems());
-        itemsList.push(makeupItems());
-        itemsList.push(UniversityItems());
+        itemsList.push(...backpackItems());
+        itemsList.push(...electronicsItems());
+        itemsList.push(...makeupItems());
+        itemsList.push(...UniversityItems());
         break;
       case tripType[4]:
-        itemsList.push(backpackItems());
-        itemsList.push(electronicsItems());
-        itemsList.push(makeupItems());
-        itemsList.push(extednedElectronicsItems());
+        itemsList.push(...backpackItems());
+        itemsList.push(...electronicsItems());
+        itemsList.push(...makeupItems());
+        itemsList.push(...extednedElectronicsItems());
         break;
       case tripType[5] || tripRandom[0]:
-        itemsList.push(SmallBagItems());
-        itemsList.push(electronicsItems());
-        itemsList.push(makeupItems());
+        itemsList.push(...SmallBagItems());
+        itemsList.push(...electronicsItems());
+        itemsList.push(...makeupItems());
         break;
       case tripType[6] || tripRandom[1]:
-        itemsList.push(SmallBagItems());
-        itemsList.push(electronicsItems());
-        itemsList.push(makeupItems());
+        itemsList.push(...SmallBagItems());
+        itemsList.push(...electronicsItems());
+        itemsList.push(...makeupItems());
         break;
       case tripType[7]:
-        itemsList.push(backpackItems());
-        itemsList.push(electronicsItems());
-        itemsList.push(makeupItems());
+        itemsList.push(...backpackItems());
+        itemsList.push(...electronicsItems());
+        itemsList.push(...makeupItems());
         break;
       case tripType[8]:
-        itemsList.push(SmallBagItems());
-        itemsList.push(electronicsItems());
-        itemsList.push(makeupItems());
+        itemsList.push(...SmallBagItems());
+        itemsList.push(...electronicsItems());
+        itemsList.push(...makeupItems());
         break;
       case tripType[9]:
-        itemsList.push(SmallBagItems());
-        itemsList.push(electronicsItems());
-        itemsList.push(makeupItems());
+        itemsList.push(...SmallBagItems());
+        itemsList.push(...electronicsItems());
+        itemsList.push(...makeupItems());
         break;
       case tripType[10]:
-        itemsList.push(SmallBagItems());
-        itemsList.push(electronicsItems());
-        itemsList.push(makeupItems());
+        itemsList.push(...SmallBagItems());
+        itemsList.push(...electronicsItems());
+        itemsList.push(...makeupItems());
         break;
       case tripType[11]:
-        itemsList.push(SmallBagItems());
-        itemsList.push(electronicsItems());
-        itemsList.push(makeupItems());
+        itemsList.push(...SmallBagItems());
+        itemsList.push(...electronicsItems());
+        itemsList.push(...makeupItems());
         break;
       case tripType[12]:
-        itemsList.push(SmallBagItems());
-        itemsList.push(electronicsItems());
-        itemsList.push(makeupItems());
+        itemsList.push(...SmallBagItems());
+        itemsList.push(...electronicsItems());
+        itemsList.push(...makeupItems());
         break;
       case tripType[13] || tripRandom[3]:
-        itemsList.push(SmallBagItems());
-        itemsList.push(electronicsItems());
-        itemsList.push(makeupItems());
+        itemsList.push(...SmallBagItems());
+        itemsList.push(...electronicsItems());
+        itemsList.push(...makeupItems());
         break;
       case tripType[14]:
-        itemsList.push(backpackItems());
-        itemsList.push(electronicsItems());
-        itemsList.push(UniversityItems());
+        itemsList.push(...backpackItems());
+        itemsList.push(...electronicsItems());
+        itemsList.push(...UniversityItems());
         break;
       case tripType[15]:
-        itemsList.push(backpackItems());
-        itemsList.push(electronicsItems());
-        itemsList.push(shoppingitems());
+        itemsList.push(...backpackItems());
+        itemsList.push(...electronicsItems());
+        itemsList.push(...shoppingitems());
         break;
       case tripType[16]:
-        itemsList.push(backpackItems());
-        itemsList.push(electronicsItems());
-        itemsList.push(shoppingitems());
+        itemsList.push(...backpackItems());
+        itemsList.push(...electronicsItems());
+        itemsList.push(...shoppingitems());
         break;
       case tripType[17]:
-        itemsList.push(SmallBagItems());
-        itemsList.push(electronicsItems());
-        itemsList.push(makeupItems());
+        itemsList.push(...SmallBagItems());
+        itemsList.push(...electronicsItems());
+        itemsList.push(...makeupItems());
         break;
       case tripType[18] || tripRandom[2]:
-        itemsList.push(SmallBagItems());
-        itemsList.push(electronicsItems());
+        itemsList.push(...SmallBagItems());
+        itemsList.push(...electronicsItems());
         break;
-        default:
-          showMessage(invalid);    
-        
+      case tripType[19]:
+        itemsList.push(...backpackItems());
+        itemsList.push(...electronicsItems());
+        itemsList.push(...makeupItems());
+        itemsList.push(...UniversityItems());
+        break;
+      default:
+        showMessage(invalid);
     }
   return itemsList;
 }
 
 function backpackItems() {
-  let newItems = [];
-  newItems.push(items[14]); // backpack
-  newItems.push(items[7]); // Purse  
-  newItems.push(items[30]); //id
-  newItems.push(items[10]); // keys
-  newItems.push(items[11]); // pads
-  return newItems;
-
+  return [
+    items[14], // backpack
+    items[7],  // Purse
+    items[30], // id
+    items[10], // keys
+    items[11]  // pads
+  ];
 }
+
 function SmallBagItems() {
-  let newItems = [];
-  newItems.push(items[15]); // smallBag
-  newItems.push(items[30]); // ID
-  newItems.push(items[10]); // keys
-  newItems.push(items[11]); // pads
-  return newItems;
-  
+  return [
+    items[15], // smallBag
+    items[30], // ID
+    items[10], // keys
+    items[11]  // pads
+  ];
 }
+
 function electronicsItems() {
-  let newItems = [];
-  newItems.push(items[3]); // USBChargerTypeC
-  newItems.push(items[5]); // poweerBank
-  return newItems;
-
+  return [
+    items[3], // USBChargerTypeC
+    items[5]  // powerBank
+  ];
 }
+
 function extednedElectronicsItems() {
-  let newItems = [];
-  newItems.push(items[4]); // USBChargerMicroB
-  newItems.push(items[19]); // nintendoSwitch
-  return newItems;
-
+  return [
+    items[4],  // USBChargerMicroB
+    items[19]  // nintendoSwitch
+  ];
 }
+
 function UniversityItems() {
-  let newItems = [];
-  newItems.push(items[20]); // books
-  newItems.push(items[34]); // pencilCase
-  newItems.push(items[35]); // memoryStick
-  newItems.push(items[21]); // laptop
-  newItems.push(items[36]); // laptopCharger
-  return newItems;
-
+  return [
+    items[20], // books
+    items[34], // pencilCase
+    items[35], // memoryStick
+    items[21], // laptop
+    items[36]  // laptopCharger
+  ];
 }
+
 function makeupItems() {
-  let newItems = [];
-  newItems.push(items[16]); // powderPuff
-  newItems.push(items[17]); // lipstick
-  return newItems;
+  return [
+    items[16], // powderPuff
+    items[17]  // lipstick
+  ];
 }
-function shoppingitems() {
-  let newItems = [];
-  newItems.push(items[13]); // plasticBag
-  newItems.push(items[28]); // shoppingList
-  newItems.push(items[28]);
-  return newItems;
 
+function shoppingitems() {
+  return [
+    items[13], // plasticBag
+    items[28], // shoppingList
+    items[28]  // shoppingList (this appears twice in your original code)
+  ];
 }
 
   function showMessage(message) {

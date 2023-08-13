@@ -447,7 +447,6 @@ function shoppingitems() {
   return [
     items[13], // plasticBag
     items[28], // shoppingList
-    items[28]  // shoppingList (this appears twice in your original code)
   ];
 }
 

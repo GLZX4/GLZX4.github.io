@@ -4,6 +4,15 @@ body, html {
     margin: 0;
     font-family: luckiest-guy;
 }
+.homeButton {
+  position: absolute;
+  top: -7%;
+  right: 8%;
+  transform: translate(-50%, -50%);
+  width: 20%;
+  height: 20%;
+  transform: scale(0.04);
+}
 .introBox {
     position: absolute;
     top: 13%;
@@ -45,7 +54,7 @@ body, html {
     transition: background-color 0.5s ease;
   }
   .requirementTxt.changed {
-    background-color: lightcoral;
+    background-color: rgb(129, 122, 221);
   }
   
 .searchContainer {

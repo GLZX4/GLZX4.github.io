@@ -9,6 +9,15 @@ header {
     width: 100%;
     height: 20%;
 }
+.homeButton {
+    position: absolute;
+    top: 0%;
+    right: 8%;
+    transform: translate(-50%, -50%);
+    width: 20%;
+    height: 20%;
+    transform: scale(0.04);
+}
 .resultsTitle {
     position: absolute;
     top: 60%;

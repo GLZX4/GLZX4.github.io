@@ -23,6 +23,9 @@ $(document).ready(function() {
     'Gym',
     'Mums'
   ];
+  localStorage.setItem('tripType', JSON.stringify(tripType)); // Save the updated eventList to local storage  
+
+
   let tripRandom = [
     'Meet with Friends',
     'Date',
